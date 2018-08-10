@@ -9,6 +9,7 @@ namespace Hotel.Atr.Admin.Controllers
 {
     public class AreaController : Controller
     {
+
         public Model1 db = new Model1();
         // GET: Area
         public ActionResult Index()
