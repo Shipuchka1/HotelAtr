@@ -1,0 +1,41 @@
+﻿@using HotelAtr.DAL.Model
+@model List<RoomType>
+
+<div class="container">
+    <div class="row">
+        <div class="col-md-12">
+            @foreach (RoomType item in Model)
+            {
+            <div class="room-list">
+                <div class="row">
+                    <div class="col-md-5 col-sm-6">
+                        <a href="#"><img height="340" width="470" src=@item.PathImg alt=""></a>
+                    </div>
+                    <div class="col-md-7 col-sm-6">
+                        <div class="room-list-text">
+                            <h3><a href="#">@item.Name</a></h3>
+                            <p>@item.Description</p>
+                            <h4>Room Facility</h4>
+                            <div class="room-service">
+                                <p>
+                                    @(item.IsFreeWiFi ? "Free WiFi" : "")
+                                    @(item.isPrivateBalcony ? " ,Private Balcony" : "")
+                                    @(item.isFullAC ? " ,Full AC" : "")
+                                    @(item.HasTV ? " ,TV" : "")
+                                    @(item.isBeachView ? " ,Beach View" : "")
+                                </p>
+                                <div class="p-amount">
+                                    <span>@item.Cost</span>
+                                    <span class="count">Per Night</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            }
+            
+        </div>
+        
+    </div>
+</div>

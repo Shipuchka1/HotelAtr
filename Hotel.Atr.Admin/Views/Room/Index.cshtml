@@ -1,0 +1,47 @@
+﻿@using HotelAtr.DAL.Model
+@model List<Room>
+@{
+    ViewBag.Title = "Index";
+}
+
+<h2>Список комнат</h2>
+@using (Html.BeginForm("AddRoom","Room"))
+{
+
+<button type="submit" class="btn btn-primary">Добавить</button>
+}
+
+<table class="table table-hover">
+    <thead>
+        <tr>
+            <th>Номер</th>
+            <th>Тип комнаты</th>
+            <th>Площадь</th>
+            <th>Количество человек</th>
+            <th>Этаж</th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (Room room in Model)
+        {
+        <tr>
+            <td>
+             
+                <span class="badge">
+                  
+                    <a href="@Url.Action("AddRoom","Room", new { roomId = room.RoomId})">@room.RoomId</a>
+                </span>
+            </td>
+            <td>@room.RoomType.Name</td>
+            <td>@room.Square</td>
+            <td>@room.CountOfPerson</td>
+            <td>@room.Floor</td>
+            
+            <td>
+            <a href="@Url.Action("Delete","Room", new { roomId = room.RoomId})">Delete</a>
+           </td>
+        </tr>
+            }
+    </tbody>
+</table> 

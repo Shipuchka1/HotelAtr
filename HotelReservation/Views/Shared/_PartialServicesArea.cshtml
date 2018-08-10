@@ -1,0 +1,59 @@
+﻿@using HotelAtr.DAL.Model
+@model List<Service>
+
+<section class="services-area ptb-90">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-8 col-md-offset-2">
+                <div class="section-title text-center">
+                    <h3>our awesome services</h3>
+                    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam</p>
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-5">
+                <!-- Nav tabs -->
+                <ul role="tablist" class="nav nav-tabs">
+                    @foreach (Service item in (List<Service>)Model)
+                    {
+
+                        <li role="presentation" class=@(item == Model.First() ? "active" : "")>
+                            <a  data-toggle="tab" role="tab" aria-controls="spa" href="#tab_@item.ServiceId" aria-expanded="true">
+                                <span class="image p-img "><img src="~/Content/img/icon/spa.png" alt=""></span>
+                                <span class="image s-img"><img src="~/Content/img/icon/spa-hover.png" alt=""></span>
+                                <span class="title">@item.Name</span>
+                                <span class="text">@item.Description</span>
+                            </a>
+                        </li>
+                    }
+
+                </ul>
+            </div>
+
+            <div class="col-md-7">
+                <div class="tab-content">
+                    @foreach (Service item in Model)
+    {
+        
+                <div id="tab_@item.ServiceId"  class="tab-pane @(item == Model.First() ? "active" : "")" role="tabpanel">
+                    <img src="@item.PathImg" alt="">
+                </div>
+
+}
+
+
+                    @*<div id="swim" class="tab-pane" role="tabpanel">
+            <img src="~/Content/img/banner/2.jpg" alt="">
+        </div>
+        <div id="restaurant" class="tab-pane" role="tabpanel">
+            <img src="~/Content/img/banner/3.jpg" alt="">
+        </div>
+        <div id="conference" class="tab-pane" role="tabpanel">
+            <img src="~/Content/img/banner/1.jpg" alt="">
+        </div>*@
+                </div>
+            </div>
+        </div>
+    </div>
+</section>

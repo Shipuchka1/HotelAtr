@@ -1,0 +1,47 @@
+﻿@model IEnumerable<HotelAtr.DAL.Model.RoomType>
+
+@{
+    ViewBag.Title = "RoomTypeIndex";
+}
+
+<h2>RoomTypeIndex</h2>
+
+
+<table class="table">
+    <thead>
+        <tr>
+            <th>Name</th>
+            <th>Description</th>
+            <th>Cost</th>
+            <th>Path Img</th>
+            <th>Free Wifi</th>
+            <th>Private Balcony</th>
+            <th>Full AC</th>
+            <th>TV</th>
+            <th>Beach View</th>
+        </tr>
+    </thead>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>@item.Name</td>
+        <td>@item.Description</td>
+        <td>@item.Cost</td>
+        <td>@item.PathImg</td>
+        <td><img width="100" height="100" src=@(item.IsFreeWiFi? "/Content/yes.png":"/Content/no.png")></td>
+        <td><img width="100" height="100" src=@(item.isPrivateBalcony? "/Content/yes.png":"/Content/no.png")></td>
+        <td><img width="100" height="100" src=@(item.isFullAC? "/Content/yes.png":"/Content/no.png")></td>
+        <td><img width="100" height="100" src=@(item.HasTV? "/Content/yes.png":"/Content/no.png")></td>
+        <td><img width="100" height="100" src=@(item.isBeachView? "/Content/yes.png":"/Content/no.png")></td>
+
+        <td>
+            @Html.ActionLink("Edit", "AddRoomType", new { id = item.RoomTypeId }) |
+            @Html.ActionLink("Delete", "RoomTypeDelete", new { id = item.RoomTypeId })
+        </td>
+    </tr>
+}
+
+
+
+</table>
+@Html.ActionLink("Add", "AddRoomType", "Room")
